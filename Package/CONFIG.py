@@ -42,13 +42,16 @@ def MAIN_EXTRACT(args):
     set_global(args)
 
     ops.mkdir(dst_lib_dir)
-    ops.copyto(ops.path_join(src_usr_lib_dir, "libhogweed.so.4.3"), dst_lib_dir)
-    ops.ln(dst_lib_dir, "libhogweed.so.4.3", "libhogweed.so.4")
-    ops.ln(dst_lib_dir, "libhogweed.so.4.3", "libhogweed.so")
 
-    ops.copyto(ops.path_join(src_usr_lib_dir, "libnettle.so.6.3"), dst_lib_dir)
-    ops.ln(dst_lib_dir, "libnettle.so.6.3", "libnettle.so.6")
-    ops.ln(dst_lib_dir, "libnettle.so.6.3", "libnettle.so")
+    lib_so = "libhogweed.so.2.5"
+    ops.copyto(ops.path_join(src_usr_lib_dir, lib_so), dst_lib_dir)
+    ops.ln(dst_lib_dir, lib_so, "libhogweed.so.2")
+    ops.ln(dst_lib_dir, lib_so, "libhogweed.so")
+
+    lib_so = "libnettle.so.4.7"
+    ops.copyto(ops.path_join(src_usr_lib_dir, lib_so), dst_lib_dir)
+    ops.ln(dst_lib_dir, lib_so, "libnettle.so.4")
+    ops.ln(dst_lib_dir, lib_so, "libnettle.so")
     return True
 
 def MAIN_PATCH(args, patch_group_name):
